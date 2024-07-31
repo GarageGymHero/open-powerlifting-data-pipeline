@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: open_powerlifting
+    database: open-powerlifting
+    schema: open_powerlifting
+    tables:
+      - name: records
+        description: 'Powerlifting records data'
