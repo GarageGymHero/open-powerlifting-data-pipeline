@@ -18,6 +18,7 @@ def dataproc_spark_dag():
             "placement": {"cluster_name": CLUSTER_NAME},
             "pyspark_job": {
                 "main_python_file_uri": f"gs://{GCS_BUCKET}/spark_apps/spark_app.py",
+                'args': ['--input_path', f'gs://{GCS_BUCKET}/data/op_data.csv', '--output_path', f'gs://{GCS_BUCKET}/data/partitioned_data'],
             },
         }
 

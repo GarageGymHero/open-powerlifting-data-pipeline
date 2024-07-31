@@ -5,8 +5,8 @@ import pandas as pd
 import zipfile
 import os
 
-@dag()
-def op_data_extract(schedule=None, catchup=False):
+@dag(schedule=None, catchup=False)
+def op_data_extract():
 
     @task
     def extract_data_from_url():

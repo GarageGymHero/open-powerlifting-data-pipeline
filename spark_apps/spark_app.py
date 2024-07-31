@@ -36,10 +36,17 @@ def main():
         .filter(df['Federation'] == 'USAPL') \
         .filter(df['Sex'] == 'M') \
         .filter(df['Event'] == 'SBD') \
-        .filter(df['equipment'] == 'Raw')
+        .filter(df['Equipment'] == 'Raw') \
+        .filter(df.TotalKg.isNotNull()) \
+        .filter(df.Best3SquatKg.isNotNull()) \
+        .filter(df['Best3SquatKg'] > 0) \
+        .filter(df.Best3BenchKg.isNotNull()) \
+        .filter(df['Best3BenchKg'] > 0) \
+        .filter(df.Best3DeadliftKg.isNotNull()) \
+        .filter(df['Best3DeadliftKg'] > 0)
         
     # Write partitioned data back to GCS
-    df.write \
+    transformed_df.write \
         .partitionBy("Year") \
         .mode("overwrite") \
         .parquet(output_path)
